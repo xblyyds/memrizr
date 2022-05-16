@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="518eab15-5288-42c7-8862-850040189089" name="xbl-server">
+        <fileTransfer accessType="SFTP" host="47.97.49.228" port="22" sshConfigId="f5e4a009-fbbe-47e3-a1a4-9e5464f937f3" sshConfig="root@47.97.49.228:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
