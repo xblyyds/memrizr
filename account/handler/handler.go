@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/xblyyds/memrizr/model"
 	"net/http"
+	"os"
 )
 
 // 有点类似java的controller
@@ -23,7 +24,7 @@ func NewHandler(c *Config) {
 		UserService: c.UserService,
 	}
 
-	g := c.R.Group("ACCOUNT_API_URL")
+	g := c.R.Group(os.Getenv("ACCOUNT_API_URL"))
 
 	g.GET("/me", h.Me)
 	g.POST("/signup", h.Signup)

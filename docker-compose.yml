@@ -26,7 +26,7 @@ services:
       - "8080"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.account.rules=Host(`127.0.0.1`) && PathPrefix(`/api/account`)"
+      - "traefik.http.routers.account.rule=Host(`47.97.49.228`) && PathPrefix(`/api/account`)"
     environment:
       - ENV=dev
     volumes:

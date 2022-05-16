@@ -56,7 +56,7 @@ func TestMe(t *testing.T) {
 		})
 		assert.NoError(t, err)
 
-		assert.Equal(t, 200, rr.Code)
+		assert.Equal(t, http.StatusOK, rr.Code)
 		assert.Equal(t, respBody, rr.Body.Bytes())
 		mockUserService.AssertExpectations(t)
 	})
