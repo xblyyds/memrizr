@@ -2,8 +2,6 @@ package main
 
 import (
 	"context"
-	"github.com/gin-gonic/gin"
-	"github.com/xblyyds/memrizr/handler"
 	"log"
 	"net/http"
 	"os"
@@ -14,11 +12,15 @@ import (
 
 func main() {
 	log.Printf("Starting server...")
-	router := gin.Default()
 
-	handler.NewHandler(&handler.Config{
-		R: router,
-	})
+	// 初始化数据源
+	ds, err := initDS()
+
+	if err != nil {
+		log.Fatalf("不能初始化数据源: %v\n", err)
+	}
+
+	router, err := inject(ds)
 
 	srv := &http.Server{
 		Addr:    ":8080",
@@ -47,6 +49,12 @@ func main() {
 	// the request it is currently handling
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
+
+	// 关闭 data sources
+	if err := ds.close(); err != nil {
+		log.Fatalf("A problem occured gracefully shutting down data sources: %v\n", err)
+	}
+
 	if err := srv.Shutdown(ctx); err != nil {
 		log.Fatal("Server forced to shutdown: ", err)
 	}

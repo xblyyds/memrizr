@@ -2,8 +2,8 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/xblyyds/memrizr/model"
-	"github.com/xblyyds/memrizr/model/apperrors"
+	"github.com/xblyyds/memrizr/account/model"
+	"github.com/xblyyds/memrizr/account/model/apperrors"
 	"log"
 	"net/http"
 )
